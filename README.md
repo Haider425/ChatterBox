@@ -1,7 +1,7 @@
 # ChatterBox
 
 <div align="center">
-  <img src="assets/logo.png" alt="ChatterBox Logo" width="120"/>
+  <img src="assets/chatterbox-logo.png" alt="ChatterBox Logo" width="120"/>
   
   A modern, feature-rich messaging application built with Flutter and Firebase
 </div>
