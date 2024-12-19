@@ -13,6 +13,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Create Google Services JSON
+        run: echo '${{ secrets.GOOGLE_SERVICES_JSON }}' > android/app/google-services.json
+
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
@@ -28,7 +31,12 @@ jobs:
       - name: Build Flutter web app
         run: flutter build web
 
-      - name: Deploy to Firebase Hosting
+      - name: Initialize Firebase
+        run: firebase use --add ${{ secrets.FIREBASE_PROJECT_ID }}
         env:
-          FIREBASE_AUTH_TOKEN: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_FINALPROJECT_C4F50 }}
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_FINALPROJECT_C4F50 }}
+
+      - name: Deploy to Firebase Hosting
         run: firebase deploy --only hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_FINALPROJECT_C4F50 }}
