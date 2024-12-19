@@ -11,5 +11,14 @@
         "*.local"
       ]
     }
-  ]
+  ],
+  "hosting": {
+    "target": "default",
+    "public": "build/web",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
 }
