@@ -1,18 +1,9 @@
 # ChatterBox
 
 <div align="center">
-  <img src="assets/logo.png" alt="ChatterBox Logo" width="120"/>
+  <img src="assets/chatterbox-logo.png" alt="ChatterBox Logo" width="120"/>
   
   A modern, feature-rich messaging application built with Flutter and Firebase
-</div>
-
-## 📱 Screenshots
-
-<div align="center">
-  <img src="screenshots/login.jpg" alt="Login Screen" width="200"/>
-  <img src="screenshots/profile.jpg" alt="Profile Screen" width="200"/>
-  <img src="screenshots/chat.jpg" alt="Chat Screen" width="200"/>
-  <img src="screenshots/search.jpg" alt="Search Screen" width="200"/>
 </div>
 
 ## 🌟 Overview
@@ -105,22 +96,8 @@ FIREBASE_API_KEY=your_firebase_api_key
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 📞 Support
-
-For support, email support@chatterbox.com or join our Slack channel.
-
-## 🙏 Acknowledgments
-
-- Flutter team for the amazing framework
-- Firebase for backend services
-- All contributors who have helped this project grow
-
-## 📊 Project Status
-
-This project is actively maintained and in continuous development. New features and improvements are regularly being added.
-
 ---
 
 <div align="center">
-  Made with ❤️ by Haider Saleem
+  Made by Haider Saleem👋🏽
 </div>
