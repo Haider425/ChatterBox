@@ -9,10 +9,11 @@
 ## 📱 Screenshots
 
 <div align="center">
-  <img src="screenshots/login.jpg" alt="Login Screen" width="200"/>
-  <img src="screenshots/profile.jpg" alt="Profile Screen" width="200"/>
-  <img src="screenshots/chat.jpg" alt="Chat Screen" width="200"/>
+  <img src="screenshots/Splash.jpg" alt="Splash Screen" width="200"/>
+  <img src="screenshots/Sign%20in%20.jpg" alt="Sign In Screen" width="200"/>
   <img src="screenshots/search.jpg" alt="Search Screen" width="200"/>
+  <img src="screenshots/Profile.jpg" alt="Profile Screen" width="200"/>
+
 </div>
 
 ## 🌟 Overview
