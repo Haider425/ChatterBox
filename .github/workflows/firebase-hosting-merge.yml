@@ -21,6 +21,10 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
+      - name: Install Firebase CLI
+        run: |
+          curl -sL https://firebase.tools | bash
+
       - name: Build Flutter web app
         run: flutter build web
 
