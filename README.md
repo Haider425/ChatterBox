@@ -6,16 +6,6 @@
   A modern, feature-rich messaging application built with Flutter and Firebase
 </div>
 
-## 📱 Screenshots
-
-<div align="center">
-  <img src="screenshots/Splash.jpg" alt="Splash Screen" width="200"/>
-  <img src="screenshots/Sign%20in%20.jpg" alt="Sign In Screen" width="200"/>
-  <img src="screenshots/search.jpg" alt="Search Screen" width="200"/>
-  <img src="screenshots/Profile.jpg" alt="Profile Screen" width="200"/>
-
-</div>
-
 ## 🌟 Overview
 
 ChatterBox is a modern messaging application designed to provide a seamless and user-friendly experience for connecting with friends and sharing information. Built using Flutter for cross-platform compatibility, Firebase for backend services, and local storage for data persistence, ChatterBox offers a robust set of features for modern communication needs.
@@ -106,22 +96,8 @@ FIREBASE_API_KEY=your_firebase_api_key
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 📞 Support
-
-For support, email support@chatterbox.com or join our Slack channel.
-
-## 🙏 Acknowledgments
-
-- Flutter team for the amazing framework
-- Firebase for backend services
-- All contributors who have helped this project grow
-
-## 📊 Project Status
-
-This project is actively maintained and in continuous development. New features and improvements are regularly being added.
-
 ---
 
 <div align="center">
-  Made with ❤️ by Haider Saleem
+  Made by Haider Saleem👋🏽
 </div>
