@@ -311,6 +311,7 @@ class _HomeScreenState extends State<HomeScreen>
             .snapshots(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
+            print('Inbox error: ${snapshot.error}');
             return Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -320,6 +321,15 @@ class _HomeScreenState extends State<HomeScreen>
                   Text(
                     'Something went wrong',
                     style: TextStyle(color: Colors.red[400], fontSize: 16),
+                  ),
+                const SizedBox(height: 8),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24),
+                    child: SelectableText(
+                      '${snapshot.error}',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.grey[500], fontSize: 12),
+                    ),
                   ),
                 ],
               ),
