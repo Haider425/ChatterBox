@@ -101,3 +101,22 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 <div align="center">
   Made by Haider Saleem👋🏽
 </div>
+
+## Web build
+
+ChatterBox also runs in the browser at https://haider425.github.io/ChatterBox/.
+The `Deploy web build` workflow builds it with Flutter and publishes it to
+GitHub Pages on every push to `main`.
+
+One-time setup:
+
+1. Firebase console, Project settings: add a **Web app** and copy its config.
+2. GitHub repo, Settings, Secrets and variables, Actions: add these secrets
+   from that config: `FIREBASE_API_KEY`, `FIREBASE_APP_ID`,
+   `FIREBASE_MESSAGING_SENDER_ID`, `FIREBASE_PROJECT_ID`,
+   `FIREBASE_AUTH_DOMAIN`, `FIREBASE_STORAGE_BUCKET`.
+3. Firebase console, Authentication, Settings, Authorized domains: add
+   `haider425.github.io`.
+4. GitHub repo, Settings, Pages: set Source to **GitHub Actions**.
+
+Push notifications are mobile only; the web build skips them.

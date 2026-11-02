@@ -41,7 +41,10 @@ class ProfileScreen extends StatelessWidget {
           .child('profile_pictures')
           .child('${user.uid}.jpg');
 
-      await storageRef.putFile(File(image.path));
+      await storageRef.putData(
+        await image.readAsBytes(),
+        SettableMetadata(contentType: 'image/jpeg'),
+      );
       final downloadUrl = await storageRef.getDownloadURL();
 
       await FirebaseFirestore.instance

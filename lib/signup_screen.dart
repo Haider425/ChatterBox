@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -26,7 +27,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final _focusPassword = FocusNode();
 
   bool _isProcessing = false;
-  File? _profileImage;
+  XFile? _profileImage;
   final _picker = ImagePicker();
 
   Future<void> _pickImage() async {
@@ -40,7 +41,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
       if (image != null) {
         setState(() {
-          _profileImage = File(image.path);
+          _profileImage = image;
         });
       }
     } catch (e) {
@@ -103,12 +104,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                         child: _profileImage != null
                             ? ClipOval(
-                          child: Image.file(
-                            _profileImage!,
-                            width: 120,
-                            height: 120,
-                            fit: BoxFit.cover,
-                          ),
+                          // On the web the picked image is a blob URL, on mobile a file path
+                          child: kIsWeb
+                              ? Image.network(
+                                  _profileImage!.path,
+                                  width: 120,
+                                  height: 120,
+                                  fit: BoxFit.cover,
+                                )
+                              : Image.file(
+                                  File(_profileImage!.path),
+                                  width: 120,
+                                  height: 120,
+                                  fit: BoxFit.cover,
+                                ),
                         )
                             : Column(
                           mainAxisAlignment: MainAxisAlignment.center,

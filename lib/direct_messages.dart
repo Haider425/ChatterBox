@@ -153,7 +153,10 @@ class _ChatScreenState extends State<ChatScreen> {
             .child('chat_images')
             .child('${DateTime.now().millisecondsSinceEpoch}.jpg');
 
-        await ref.putFile(File(photo.path));
+        await ref.putData(
+          await photo.readAsBytes(),
+          SettableMetadata(contentType: 'image/jpeg'),
+        );
         final imageUrl = await ref.getDownloadURL();
         await _sendMessage(imageUrl: imageUrl);
       } catch (e) {
@@ -275,7 +278,8 @@ class _ChatScreenState extends State<ChatScreen> {
       if (result != null) {
         setState(() => _isUploading = true);
 
-        final file = File(result.files.single.path!);
+        // withData: true gives us the bytes on every platform, including the web
+        final bytes = result.files.single.bytes!;
         final fileName = result.files.single.name;
         final fileSize = result.files.single.size;
 
@@ -285,7 +289,7 @@ class _ChatScreenState extends State<ChatScreen> {
             .child('chat_files')
             .child('${DateTime.now().millisecondsSinceEpoch}_$fileName');
 
-        await ref.putFile(file);
+        await ref.putData(bytes);
         final fileUrl = await ref.getDownloadURL();
 
         // Send message with file
@@ -337,7 +341,10 @@ class _ChatScreenState extends State<ChatScreen> {
             .child('chat_images')
             .child('${DateTime.now().millisecondsSinceEpoch}.jpg');
 
-        await ref.putFile(File(image.path));
+        await ref.putData(
+          await image.readAsBytes(),
+          SettableMetadata(contentType: 'image/jpeg'),
+        );
         final imageUrl = await ref.getDownloadURL();
         await _sendMessage(imageUrl: imageUrl);
       } catch (e) {

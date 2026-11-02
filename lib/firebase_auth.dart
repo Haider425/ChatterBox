@@ -2,14 +2,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'dart:io';
+import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:image_picker/image_picker.dart';
 
 class FirebaseAuthHelper {
   static final FirebaseFirestore _db = FirebaseFirestore.instance;
   static final FirebaseStorage _storage = FirebaseStorage.instance;
 
   static Future<void> _saveTokenToUser(String userId) async {
-    final fcmToken = await FirebaseMessaging.instance.getToken();
+    final fcmToken = kIsWeb ? null : await FirebaseMessaging.instance.getToken();
     print('FCM Token: $fcmToken');
     if (fcmToken != null) {
       await _db.collection('users').doc(userId).set({
@@ -25,7 +26,7 @@ class FirebaseAuthHelper {
     required String lastName,
     required String email,
     required String password,
-    File? profileImage,
+    XFile? profileImage,
   }) async {
     FirebaseAuth auth = FirebaseAuth.instance;
     User? user;
@@ -47,7 +48,10 @@ class FirebaseAuthHelper {
           // Upload profile image asynchronously without blocking user creation
           String path = 'profile_images/${user.uid}.jpg';
           Reference ref = _storage.ref().child(path);
-          await ref.putFile(profileImage);
+          await ref.putData(
+            await profileImage.readAsBytes(),
+            SettableMetadata(contentType: 'image/jpeg'),
+          );
           photoURL = await ref.getDownloadURL();
         }
 
@@ -58,7 +62,7 @@ class FirebaseAuthHelper {
           'email': email,
           'emailVerified': user.emailVerified,
           'photoURL': photoURL,
-          'fcmToken': await FirebaseMessaging.instance.getToken(),
+          'fcmToken': kIsWeb ? null : await FirebaseMessaging.instance.getToken(),
           'createdAt': FieldValue.serverTimestamp(),
           'lastActive': FieldValue.serverTimestamp(),
           'status': 'online',
